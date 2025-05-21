@@ -2,12 +2,14 @@ package com.rideshare.api.service
 
 import com.rideshare.common.models.Trip
 import org.springframework.stereotype.Service
-
+import com.rideshare.api.repository.TripRepository
 @Service
-class TripService {
+class TripService(
+    private val tripRepository: TripRepository
+) {
 
-    suspend fun startTrip(tripRequest: Trip): Trip {
-        // TODO: persist new trip
+    suspend fun startTrip(dto: TripDto): Trip {
+        val saved = tripRepository.save(dto.toEntity())
         return tripRequest
     }
 
