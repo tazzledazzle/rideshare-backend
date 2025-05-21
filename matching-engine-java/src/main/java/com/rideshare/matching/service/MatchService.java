@@ -53,7 +53,7 @@ public class MatchService {
         drivers.forEach(driver -> {
             String key = Config.REDIS_GEO_KEY;
             redisTemplate.opsForGeo()
-                    .add(key, driver.getLocation(), driver.getId());
+                    .add(key, driver.getLocation(), driver);
         });
     }
 }
