@@ -12,8 +12,7 @@ jobs:
         uses: actions/setup-java@v3
         with: { java-version: '17', distribution: 'temurin' }
       - name: Build ${{ matrix.project }}
-        working-directory: ${{ matrix.project }}
         run: ./gradlew clean assemble
       - name: Run Tests ${{ matrix.project }}
-        working-directory: ${{ matrix.project }}
+    # maybe the root directory will work better
         run: ./gradlew test
