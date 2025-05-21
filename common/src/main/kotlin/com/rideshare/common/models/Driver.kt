@@ -3,10 +3,11 @@ package com.rideshare.common.models
 import javax.persistence.*
 
 @Entity
-@Table(name = "users")
-data class User(
+@Table(name = "drivers")
+data class Driver(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    val name: String,
-    val email: String
+    val isActive: Boolean = true,
+    @Embedded
+    val location: Location
 )
