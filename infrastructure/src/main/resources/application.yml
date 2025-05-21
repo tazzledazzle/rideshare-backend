@@ -1,0 +1,10 @@
+# infrastructure/src/main/resources/application.yml
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/rideshare}
+    username: ${DB_USER:}
+    password: ${DB_PASS:}
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+

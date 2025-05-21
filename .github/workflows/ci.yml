@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [common, matching-engine-java, api-kotlin]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with: { java-version: '17', distribution: 'temurin' }
+      - name: Build ${{ matrix.project }}
+        working-directory: ${{ matrix.project }}
+        run: ./gradlew clean assemble
+      - name: Run Tests ${{ matrix.project }}
+        working-directory: ${{ matrix.project }}
+        run: ./gradlew test
