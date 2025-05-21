@@ -1,6 +1,6 @@
 package com.rideshare.common.models
 
-import javax.persistence.Embeddable
+import jakarta.persistence.Embeddable
 
 @Embeddable
 data class Location(

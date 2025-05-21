@@ -1,7 +1,7 @@
 package com.rideshare.common.models
 
 import java.time.LocalDateTime
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "trips")

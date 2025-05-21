@@ -9,5 +9,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.data:spring-data-jpa")
     implementation("org.postgresql:postgresql:42.5.0")
 }

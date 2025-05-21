@@ -1,7 +1,7 @@
 package com.rideshare.api.mapper
 
-import com.rideshare.common.models.User
 import com.rideshare.api.dto.UserDto
+import com.rideshare.common.models.User
 
 fun User.toDto() = UserDto(
     id = this.id,

@@ -1,18 +1,25 @@
 package com.rideshare.api.service
 
-import com.rideshare.common.models.User
+import com.rideshare.api.dto.UserDto
+import com.rideshare.api.mapper.toDto
+import com.rideshare.api.mapper.toEntity
+import com.rideshare.api.repository.UserRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserService {
+open class UserService(
+    private val userRepository: UserRepository
+) {
 
-    suspend fun registerUser(user: User): User {
-        // TODO: persist user to DB
-        return user
+    @Transactional
+    open suspend fun registerUser(dto: UserDto): UserDto {
+        val entity = userRepository.save(dto.toEntity())
+        return entity.toDto()
     }
 
-    suspend fun getUser(id: Long): User {
-        // TODO: fetch user from DB
-        return User(id, "", "")
+    suspend fun getUser(id: Long): UserDto {
+        var user = userRepository.findById(id).orElseThrow { RuntimeException("User not found") }!!
+        return user.toDto()
     }
 }
