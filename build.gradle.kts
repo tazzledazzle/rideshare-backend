@@ -1,7 +1,7 @@
 
 plugins {
     kotlin("jvm").version("2.1.20") apply false
-    id("org.springframework.boot").version("2.7.0") apply false
+    id("org.springframework.boot").version("3.4.3") apply false
 }
 allprojects {
     group = "com.rideshare"
@@ -9,19 +9,12 @@ allprojects {
     repositories { mavenCentral() }
 }
 // subprojects {
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_23)
-        }
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_23)
     }
-// }
-
-// kotlin {
-    // jvmToolchain {
-    //     languageVersion.set(JavaLanguageVersion.of("23"))
-    // }
-    // Or shorter:
-    // jvmToolchain(23)
-    // For example:
-    // jvmToolchain(17)
-// }
+}
+tasks.withType<JavaCompile> {
+    sourceCompatibility = JavaVersion.VERSION_23.toString()
+    targetCompatibility = JavaVersion.VERSION_23.toString()
+}
